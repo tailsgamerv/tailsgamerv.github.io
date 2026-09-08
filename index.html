@@ -3,44 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidade FoxOS / Tailsgamerv</title>
+    <title>Tailsgamerv // Dev Portal</title>
     <!-- Script Oficial do Gravatar -->
     <script async src="https://secure.gravatar.com/js/gprofiles.js"></script>
     <style>
-        /* Variáveis de Cores (Tema Escuro / Modo KDE Dark por padrão) */
+        /* Estática Cyberpunk / Terminal Dark por Padrão */
         :root {
-            --bg-main: #121416;
-            --bg-card: #1b1e20;
-            --bg-header: #1b1e20;
-            --bg-footer: #151719;
-            --border-color: #31363b;
-            --text-main: #fcfcfc;
-            --text-sub: #a0a0a0;
-            --accent-blue: #3daee9;
-            --accent-hover: #232629;
-            --btn-primary: #1d99f3;
+            --bg-main: #08090a;
+            --bg-card: #0d1117;
+            --bg-header: #0d1117;
+            --bg-footer: #050607;
+            --border-color: #00ff66;
+            --border-sub: #161b22;
+            --text-main: #00ff66;
+            --text-sub: #8b949e;
+            --accent-blue: #00f0ff;
+            --accent-hover: #1f2937;
+            --btn-primary: #00ff66;
+            --btn-text: #000000;
+            --danger-color: #ff0055;
         }
 
-        /* Variáveis de Cores para o Modo Claro (KDE Breeze Light) */
+        /* Variáveis Cyber Modo Claro (Breeze Light Cyber) */
         body.light-theme {
-            --bg-main: #eff0f1;
+            --bg-main: #eef2f5;
             --bg-card: #ffffff;
-            --bg-header: #fcfcfc;
-            --bg-footer: #e3e5e7;
-            --border-color: #babdbf;
-            --text-main: #232629;
-            --text-sub: #595959;
-            --accent-blue: #1d99f3;
-            --accent-hover: #e0e0e0;
-            --btn-primary: #1d99f3;
+            --bg-header: #ffffff;
+            --bg-footer: #d8e0e8;
+            --border-color: #00aa44;
+            --border-sub: #cccccc;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --accent-blue: #0284c7;
+            --accent-hover: #e2e8f0;
+            --btn-primary: #00aa44;
+            --btn-text: #ffffff;
+            --danger-color: #cc0044;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-            border-radius: 0 !important; /* Design 100% Quadrado Estilo KDE */
+            font-family: 'Consolas', 'Courier New', 'Segoe UI', monospace;
+            border-radius: 0 !important; /* 100% Quadrado Estilo KDE */
         }
 
         body {
@@ -52,10 +58,10 @@
             transition: background-color 0.2s, color 0.2s;
         }
 
-        /* Topbar / Navbar KDE */
+        /* Navbar Cyber */
         header {
             background-color: var(--bg-header);
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -76,91 +82,85 @@
             width: 38px;
             height: 38px;
             object-fit: cover;
-            border: 1px solid var(--accent-blue);
+            border: 2px solid var(--border-color);
             cursor: pointer;
         }
 
         nav a {
             color: var(--text-main);
             text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
+            font-size: 13px;
+            font-weight: bold;
+            transition: all 0.2s;
             cursor: pointer;
-            padding: 5px 10px;
+            padding: 6px 12px;
+            border: 1px solid transparent;
+            text-transform: uppercase;
         }
 
         nav a:hover, nav a.active {
-            color: var(--accent-blue);
-            background-color: var(--accent-hover);
+            color: var(--bg-main);
+            background-color: var(--border-color);
+            border-color: var(--border-color);
         }
 
         .nav-right {
             display: flex;
             align-items: center;
             gap: 15px;
-            color: var(--text-main);
-            font-size: 14px;
         }
 
-        /* Botão para alternar Tema e Idioma */
         .theme-toggle-btn, .lang-select {
-            background-color: var(--accent-hover);
+            background-color: var(--bg-card);
             color: var(--text-main);
             border: 1px solid var(--border-color);
             padding: 5px 10px;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
+            font-weight: bold;
         }
 
-        /* Banner de Alerta Konqi */
-        .announcement-banner {
-            background: linear-gradient(90deg, #0a1118 0%, #172a3a 50%, #0a1118 100%);
-            border-bottom: 2px solid #da4453;
+        /* Banner de Perigo / Alerta */
+        .danger-banner {
+            background: #1a0008;
+            border-bottom: 2px solid var(--danger-color);
             padding: 12px 30px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .banner-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .mascot-konqi, .fox-scared-img {
-            width: 45px;
-            height: 45px;
-            object-fit: cover;
-        }
-
-        .fox-scared-img {
-            border: 1px solid #da4453;
-        }
-
-        .banner-title {
-            font-size: 18px;
+        .banner-text-blink {
+            color: var(--danger-color);
+            font-size: 16px;
             font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: blink 0.8s infinite alternate;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+
+        .btn-danger-banner {
+            background-color: var(--danger-color);
             color: #ffffff;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 12px;
+            border: none;
+            cursor: pointer;
             text-transform: uppercase;
         }
 
-        .btn-banner {
-            background-color: #da4453;
-            color: #ffffff;
-            padding: 8px 18px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-            transition: background 0.2s;
+        .btn-danger-banner:hover {
+            background-color: #ff3377;
         }
 
-        .btn-banner:hover {
-            background-color: #ff4d4d;
-        }
-
-        /* Estrutura das Páginas */
+        /* Layout Estrutural */
         main {
             max-width: 1100px;
             margin: 0 auto;
@@ -176,21 +176,21 @@
             display: block;
         }
 
-        /* Hero / Seção Principal */
+        /* Hero / Seção do Dev */
         .hero-section {
             text-align: center;
             padding: 30px 0;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-sub);
         }
 
-        /* Card do Gravatar Integrado */
         .gravatar-card-widget {
             background-color: var(--bg-card);
-            border: 1px solid var(--accent-blue);
+            border: 2px solid var(--accent-blue);
             padding: 20px;
-            max-width: 320px;
+            max-width: 340px;
             margin: 0 auto 20px auto;
             text-align: center;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
         }
 
         .profile-pic {
@@ -203,24 +203,25 @@
 
         .gravatar-card-widget h2 {
             font-size: 20px;
-            color: var(--text-main);
+            color: var(--accent-blue);
         }
 
         .gravatar-card-widget p {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-sub);
             margin-bottom: 12px;
         }
 
         h1 {
-            font-size: 42px;
-            font-weight: 800;
+            font-size: 38px;
+            font-weight: 900;
             color: var(--text-main);
             margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
         .hero-desc {
-            font-size: 18px;
+            font-size: 15px;
             color: var(--text-sub);
             max-width: 800px;
             margin: 0 auto 25px auto;
@@ -234,94 +235,114 @@
             flex-wrap: wrap;
         }
 
-        .btn-primary {
-            background-color: var(--btn-primary);
-            color: #ffffff;
-            padding: 12px 24px;
+        .btn {
+            padding: 10px 20px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
             display: inline-block;
+            border: 1px solid var(--border-color);
+            text-transform: uppercase;
+        }
+
+        .btn-main {
+            background-color: var(--btn-primary);
+            color: var(--btn-text);
         }
 
         .btn-yt {
-            background-color: #da4453;
+            background-color: #ff0000;
             color: #ffffff;
-            padding: 12px 24px;
-            text-decoration: none;
-            font-weight: 600;
+            border-color: #ff0000;
+        }
+
+        .btn-github {
+            background-color: #161b22;
+            color: #ffffff;
+            border-color: #30363d;
         }
 
         .btn-gravatar {
             background-color: #1e87f0;
             color: #ffffff;
-            padding: 12px 24px;
-            text-decoration: none;
-            font-weight: 600;
+            border-color: #1e87f0;
         }
 
-        .btn-github {
-            background-color: #24292e;
-            color: #ffffff;
-            padding: 12px 24px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-        }
-
-        /* Seção da Comic */
-        .comic-container {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            text-align: center;
-        }
-
-        .comic-img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid var(--border-color);
+        /* Container de Documentação / Alerta Secreto */
+        .doc-box {
+            background-color: var(--bg-card);
+            border: 2px solid var(--danger-color);
+            padding: 30px;
             margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.2);
         }
 
-        /* Grid */
+        .doc-header-blink {
+            color: var(--danger-color);
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: blink 0.8s infinite alternate;
+        }
+
+        .doc-content {
+            color: var(--text-main);
+            font-size: 14px;
+            line-height: 1.8;
+            background: #000000;
+            padding: 20px;
+            border: 1px solid var(--border-sub);
+        }
+
+        .doc-content p {
+            margin-bottom: 15px;
+        }
+
+        /* Grid de Cards */
         .section-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             margin: 40px 0 20px 0;
             color: var(--text-main);
+            text-transform: uppercase;
+            border-left: 4px solid var(--border-color);
+            padding-left: 10px;
         }
 
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            gap: 20px;
             margin-bottom: 40px;
         }
 
         .card {
             background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--border-sub);
             padding: 20px;
         }
 
         .card-tag {
-            background-color: #f67400;
-            color: #fff;
-            font-size: 11px;
+            background-color: var(--border-color);
+            color: var(--btn-text);
+            font-size: 10px;
             font-weight: bold;
-            padding: 3px 8px;
+            padding: 2px 6px;
             display: inline-block;
             margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         .card h3 {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--accent-blue);
             margin-bottom: 10px;
         }
 
         .card p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-sub);
             line-height: 1.5;
         }
@@ -329,8 +350,8 @@
         /* Footer */
         footer {
             background-color: var(--bg-footer);
-            border-top: 1px solid var(--border-color);
-            padding: 40px 20px 20px 20px;
+            border-top: 2px solid var(--border-color);
+            padding: 30px 20px 20px 20px;
             margin-top: auto;
         }
 
@@ -338,55 +359,55 @@
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .footer-col h4 {
             color: var(--text-main);
-            font-size: 14px;
-            margin-bottom: 12px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         .footer-col a {
             display: block;
             color: var(--text-sub);
             text-decoration: none;
-            font-size: 13px;
-            margin-bottom: 8px;
+            font-size: 12px;
+            margin-bottom: 6px;
             cursor: pointer;
         }
 
         .footer-col a:hover {
-            color: var(--accent-blue);
+            color: var(--border-color);
         }
 
         .footer-bottom {
             text-align: center;
             color: var(--text-sub);
-            font-size: 12px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
+            font-size: 11px;
+            border-top: 1px solid var(--border-sub);
+            padding-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header estilo kde.org -->
+    <!-- Header / Navbar estilo Cyber KDE -->
     <header>
         <div class="nav-left">
-            <img src="https://0.gravatar.com/userimage/255651233/88b1fc3ee4e255fc51cf115acb98e291?size=256" alt="Ícone" class="site-icon" onclick="switchPage('home')">
+            <img src="https://0.gravatar.com/userimage/255651233/88b1fc3ee4e255fc51cf115acb98e291?size=256" alt="Ícone Dev" class="site-icon" onclick="switchPage('home')">
             <nav style="display: flex; gap: 5px;">
-                <a onclick="switchPage('home')" id="nav-home" class="active" data-i18n="nav_home">Início</a>
-                <a onclick="switchPage('produtos')" id="nav-produtos" data-i18n="nav_produtos">Produtos</a>
-                <a onclick="switchPage('comics')" id="nav-comics" data-i18n="nav_comics">Comics & Arte</a>
-                <a onclick="switchPage('dev')" id="nav-dev" data-i18n="nav_dev">Desenvolvimento</a>
+                <a onclick="switchPage('home')" id="nav-home" class="active" data-i18n="nav_home">Dev Home</a>
+                <a onclick="switchPage('projetos')" id="nav-projetos" data-i18n="nav_projetos">Projetos</a>
+                <a onclick="switchPage('comics')" id="nav-comics" data-i18n="nav_comics">Comics</a>
                 <a onclick="switchPage('apoiar')" id="nav-apoiar" data-i18n="nav_apoiar">♥ Apoiar</a>
             </nav>
         </div>
         <div class="nav-right">
-            <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn">☀️ Modo Claro</button>
+            <button class="theme-toggle-btn" onclick="toggleTheme()" id="theme-btn">☀️ Light Mode</button>
             <select class="lang-select" onchange="changeLanguage(this.value)">
                 <option value="pt">🌐 PT-BR</option>
                 <option value="en">🌐 EN-US</option>
@@ -395,158 +416,149 @@
         </div>
     </header>
 
-    <!-- Banner com o Konqi -->
-    <div class="announcement-banner">
-        <div class="banner-content">
-            <img src="https://1.gravatar.com/userimage/255651233/080e4edb11c39c5f57112c92413f9af6?size=256&axis=min" alt="Konqi" class="mascot-konqi">
-            <img src="https://1.gravatar.com/userimage/255651233/c3c4b2242f33384c741e056d203ebf6c?size=256" alt="Raposa Assustada" class="fox-scared-img">
-            <div class="banner-title" data-i18n="banner_title">SOCORRO! O KONQI VAI MATAR O TAILSGAMERV!!</div>
+    <!-- Banner de Perigo (Levado para a Página de Alerta) -->
+    <div class="danger-banner">
+        <div class="banner-text-blink" data-i18n="banner_title">
+            NÓS ESTAMOS EM PERIGO!!
         </div>
-        <a href="https://www.youtube.com/@Tailsgamerv" target="_blank" class="btn-banner" data-i18n="banner_btn">Assistir no YouTube</a>
+        <button onclick="switchPage('alerta')" class="btn-danger-banner" data-i18n="banner_btn">Ler Documentação</button>
     </div>
 
     <main>
-        <!-- PÁGINA 1: INÍCIO -->
+        <!-- PÁGINA 1: HOME DEV -->
         <div id="page-home" class="page active-page">
             <section class="hero-section">
-                
-                <!-- Card Estilo Gravatar Integrado -->
+                <!-- Gravatar Card -->
                 <div class="gravatar-card-widget">
                     <img src="https://gravatar.com/avatar/39b1228b26785da75507f41c0d0d920a8239c8f66cb530cf8c326fd175ef541d?v=1780800072000&size=256&d=initials" alt="Tailsgamerv" class="profile-pic">
                     <h2>Tailsgamerv</h2>
-                    <p data-i18n="card_subtitle">@tailsgamerv56 • Criador do FoxOS</p>
-                    <a href="https://gravatar.com/tailsgamerv56" target="_blank" class="btn-banner" style="background-color: #1e87f0; text-decoration: none; display: inline-block;" data-i18n="card_btn">Ver Gravatar</a>
+                    <p data-i18n="card_subtitle">@tailsgamerv56 • Desenvolvedor & Criador</p>
+                    <a href="https://gravatar.com/tailsgamerv56" target="_blank" class="btn btn-gravatar" style="font-size: 11px; padding: 5px 10px;" data-i18n="card_btn">Ver Gravatar</a>
                 </div>
 
-                <h1>FoxOS Community</h1>
+                <h1>Tailsgamerv Developer Portal</h1>
                 <p class="hero-desc" data-i18n="hero_desc">
-                    O lar oficial do <strong>FoxOS</strong> (Kubuntu 18.04 32 bits + KDE Plasma). Desempenho puro sem travar enquanto a raposa tenta escapar do Konqi!
+                    Bem-vindo à minha página pessoal de desenvolvedor! Aqui publico meus projetos, tirinhas, códigos e atualizações sobre os meus experimentos de sistemas.
                 </p>
                 <div class="hero-btns">
-                    <a href="https://www.youtube.com/@Tailsgamerv" target="_blank" class="btn-yt" data-i18n="btn_yt">📺 YouTube</a>
-                    <a href="https://github.com/uwutestname08-ops" target="_blank" class="btn-github">🐙 GitHub</a>
-                    <a href="https://gravatar.com/tailsgamerv56" target="_blank" class="btn-gravatar" data-i18n="btn_gravatar">👤 Gravatar</a>
-                    <a onclick="switchPage('produtos')" class="btn-primary" style="cursor: pointer;" data-i18n="btn_download">📦 Baixar Apps</a>
+                    <a href="https://github.com/uwutestname08-ops" target="_blank" class="btn btn-github">🐙 GitHub Profile</a>
+                    <a href="https://www.youtube.com/@Tailsgamerv" target="_blank" class="btn btn-yt">📺 YouTube</a>
+                    <a href="https://gravatar.com/tailsgamerv56" target="_blank" class="btn btn-gravatar">👤 Gravatar</a>
                 </div>
             </section>
 
-            <h2 class="section-title" data-i18n="news_title">Anúncios & Notícias</h2>
+            <h2 class="section-title" data-i18n="sec_repos">Meus Repositórios & Links</h2>
             <div class="grid-2">
                 <div class="card">
-                    <span class="card-tag">FoxOS v18.04</span>
-                    <h3 data-i18n="news_1_title">Kernel 32-bits Otimizado</h3>
-                    <p data-i18n="news_1_desc">O FoxOS continua garantindo estabilidade máxima em computadores antigos sem travar nada.</p>
-                </div>
-                <div class="card">
-                    <span class="card-tag" style="background-color: #da4453;">Konqi Alert</span>
-                    <h3 data-i18n="news_2_title">Ataque no Terminal</h3>
-                    <p data-i18n="news_2_desc">O Konqi tentou rodar pacotes 64 bits, mas o kernel do FoxOS repeliu as instruções com sucesso!</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- PÁGINA 2: COMICS & ARTE -->
-        <div id="page-comics" class="page">
-            <div class="comic-container">
-                <h1 style="color: var(--accent-blue);" data-i18n="comics_title">🎨 Quadrinhos & Galeria</h1>
-                <p style="color: var(--text-sub); margin-top: 10px;" data-i18n="comics_desc">Tirinhas oficiais do FoxOS e histórias de bastidores desenhadas por Tailsgamerv!</p>
-                <img src="https://1.gravatar.com/userimage/255651233/d4416614d48f34f354867fb47179b205?size=600" alt="Comic Oficial" class="comic-img">
-            </div>
-        </div>
-
-        <!-- PÁGINA 3: PRODUTOS -->
-        <div id="page-produtos" class="page">
-            <h1 data-i18n="prod_title">📦 Produtos & Downloads</h1>
-            <p style="color: var(--text-sub); margin-top: 10px; margin-bottom: 20px;" data-i18n="prod_desc">Baixe versões customizadas e ferramentas exclusivas do FoxOS.</p>
-            <div class="grid-2">
-                <div class="card">
-                    <span class="card-tag" style="background-color: #2ecc71;">ISO Oficial</span>
-                    <h3>FoxOS Plasma Edition (32 bits)</h3>
-                    <p data-i18n="prod_1_desc">Baseado no Kubuntu 18.04 LTS com o ecossistema rápido e otimizado para a raposa.</p>
+                    <span class="card-tag">GitHub Pages</span>
+                    <h3>tailsgamerv.github.io</h3>
+                    <p>Repositório do código-fonte desta página pessoal de desenvolvedor.</p>
                     <br>
-                    <a href="#" class="btn-primary" style="font-size: 12px; padding: 8px 14px;" data-i18n="prod_btn">Download (.ISO)</a>
+                    <a href="https://github.com/uwutestname08-ops/tailsgamerv.github.io" target="_blank" class="btn btn-main" style="font-size: 10px;">Acessar Código</a>
                 </div>
                 <div class="card">
-                    <span class="card-tag" data-i18n="wip_tag">Em Construção</span>
-                    <h3>FoxOS Store (.apk & .exe)</h3>
-                    <p data-i18n="prod_2_desc">Repositório especial com programas adaptados para máquinas com recursos limitados.</p>
+                    <span class="card-tag" style="background-color: var(--accent-blue); color: #000;">Dev Profile</span>
+                    <h3>uwutestname08-ops</h3>
+                    <p>Meu perfil principal no GitHub com meus projetos, scripts e testes.</p>
+                    <br>
+                    <a href="https://github.com/uwutestname08-ops" target="_blank" class="btn btn-main" style="font-size: 10px;">Ver Perfil</a>
                 </div>
             </div>
         </div>
 
-        <!-- PÁGINA 4: DESENVOLVIMENTO -->
-        <div id="page-dev" class="page">
-            <h1 data-i18n="dev_title">💻 Área do Desenvolvedor</h1>
-            <p style="color: var(--text-sub); margin-top: 10px;" data-i18n="dev_desc">Projetos em C++, scripts de automação e documentação do sistema.</p>
-            <div class="card" style="margin-top: 20px;">
-                <h3>GitHub Repository</h3>
-                <p>Acesse o repositório oficial deste site diretamente no GitHub:</p>
+        <!-- PÁGINA 2: DOCUMENTAÇÃO / ALERTA DE PERIGO (O SEGREDO) -->
+        <div id="page-alerta" class="page">
+            <div class="doc-box">
+                <div class="doc-header-blink">
+                    NÓS ESTAMOS EM PERIGO!!
+                </div>
+                <div class="doc-content">
+                    <p><strong>[DOCUMENTAÇÃO SECRETA DE DESENVOLVIMENTO]</strong></p>
+                    <p>Aparentemente, Relatos em O Computador STI 1414 (Codigonome FoxOS-PRIVATE) Que No Konqueror teve uma coisa que pode PIORAR O FOXOS!!, eu acho ;-;, O Konqueror guarda caches de imagem. nós estávamos na página do KDE, clicamos na página do aniversário de 30 anos do KDE. scrollamos (e perdendo sanidade, estou brincando!), na pasta: <code>.cache/konqueror/</code>, tinha uma pasta que contém as imagens do.. SITE?!?</p>
+                    
+                    <p style="color: var(--danger-color); font-weight: bold;">E Notícia Que pode destruir o FoxOS:</p>
+                    <p>Aparentemente nós estamos muito atrasados para o KDE, Eles Fizeram um Modelo 3D De Konqi.. Provavelmente estamos Atrasados, mas infelizmente isso pode ter uma pequena chance de encerrar o Projeto FoxOS..</p>
+                    
+                    <p>A notícia boa é que isso é difícil de acontecer, Aliás Essa foi a notícia, tchau :D!</p>
+                    <br>
+                    <p style="text-align: right; font-weight: bold; color: var(--accent-blue);">- Tailsgamerv</p>
+                </div>
                 <br>
-                <a href="https://github.com/uwutestname08-ops/tailsgamerv.github.io" target="_blank" class="btn-primary" style="font-size: 13px;">View tailsgamerv.github.io</a>
+                <button onclick="switchPage('home')" class="btn btn-main">← Voltar ao Início</button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: PROJETOS -->
+        <div id="page-projetos" class="page">
+            <h1>📦 Projetos do Desenvolvedor</h1>
+            <p style="color: var(--text-sub); margin-top: 10px; margin-bottom: 20px;">Alguns dos sistemas, scripts e ferramentas em que trabalho.</p>
+            <div class="grid-2">
+                <div class="card">
+                    <span class="card-tag">OS Experiment</span>
+                    <h3>Projeto FoxOS</h3>
+                    <p>A página do sistema FoxOS agora terá o seu próprio domínio e espaço dedicado!</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag">Web Dev</span>
+                    <h3>Developer Portal Hub</h3>
+                    <p>Página cyberpunk construída sem frameworks pesados, 100% responsiva para o Firefox ESR.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 4: COMICS -->
+        <div id="page-comics" class="page">
+            <div class="doc-box" style="border-color: var(--accent-blue);">
+                <h1 style="color: var(--accent-blue);">🎨 Tirinhas & Galeria</h1>
+                <p style="color: var(--text-sub); margin-top: 10px;">Artes, desenhos e ilustrações feitas por Tailsgamerv!</p>
+                <div style="text-align: center; margin-top: 20px;">
+                    <img src="https://1.gravatar.com/userimage/255651233/d4416614d48f34f354867fb47179b205?size=600" alt="Comic" style="max-width: 100%; border: 1px solid var(--border-color);">
+                </div>
             </div>
         </div>
 
         <!-- PÁGINA 5: APOIAR -->
         <div id="page-apoiar" class="page">
-            <h1 data-i18n="support_title">♥ Apoie o FoxOS</h1>
-            <p style="color: var(--text-sub); margin-top: 10px;" data-i18n="support_desc">Ajude o Tailsgamerv a manter o projeto vivo e criar mais conteúdos!</p>
-            <div class="card" style="margin-top: 20px; border-color: #2ecc71;">
-                <h3 style="color: #2ecc71;" data-i18n="support_card_title">Contribua com o projeto</h3>
-                <p data-i18n="support_card_desc">Inscreva-se no canal do YouTube, compartilhe com os amigos ou envie feedback direto pelo Gravatar!</p>
+            <h1>♥ Apoie o Dev</h1>
+            <p style="color: var(--text-sub); margin-top: 10px;">Gostou dos projetos? Veja como me dar uma força!</p>
+            <div class="card" style="margin-top: 20px; border-color: var(--border-color);">
+                <h3>Redes & Inscrição</h3>
+                <p>Inscreva-se no meu canal do YouTube, mande uma mensagem pelo Gravatar ou dê um Star no meu repositório do GitHub!</p>
             </div>
         </div>
     </main>
 
-    <!-- Rodapé Completo KDE -->
+    <!-- Rodapé Cyber -->
     <footer>
         <div class="footer-cols">
             <div class="footer-col">
-                <h4 data-i18n="footer_col1">Produtos</h4>
-                <a onclick="switchPage('produtos')">FoxOS Plasma</a>
-                <a onclick="switchPage('produtos')">Apps 32-bits</a>
+                <h4>Navegação</h4>
+                <a onclick="switchPage('home')">Dev Home</a>
+                <a onclick="switchPage('projetos')">Projetos</a>
             </div>
             <div class="footer-col">
-                <h4 data-i18n="footer_col2">Desenvolva</h4>
-                <a href="https://github.com/uwutestname08-ops/tailsgamerv.github.io" target="_blank">GitHub Repo</a>
-                <a onclick="switchPage('dev')" data-i18n="footer_doc">Documentação</a>
+                <h4>GitHub</h4>
+                <a href="https://github.com/uwutestname08-ops" target="_blank">Perfil GitHub</a>
+                <a href="https://github.com/uwutestname08-ops/tailsgamerv.github.io" target="_blank">Repositório do Site</a>
             </div>
             <div class="footer-col">
-                <h4 data-i18n="footer_col3">Notícias</h4>
+                <h4>Redes</h4>
                 <a href="https://www.youtube.com/@Tailsgamerv" target="_blank">YouTube</a>
-                <a onclick="switchPage('home')" data-i18n="footer_announcements">Anúncios</a>
-            </div>
-            <div class="footer-col">
-                <h4 data-i18n="footer_col4">Recursos</h4>
-                <a onclick="switchPage('comics')">Comics & Arte</a>
-                <a onclick="switchPage('home')">Wiki FoxOS</a>
-            </div>
-            <div class="footer-col">
-                <h4 data-i18n="footer_col5">Comunidade</h4>
                 <a href="https://gravatar.com/tailsgamerv56" target="_blank">Gravatar Profile</a>
-                <a href="https://github.com/uwutestname08-ops" target="_blank">GitHub Profile</a>
+            </div>
+            <div class="footer-col">
+                <h4>Documentação</h4>
+                <a onclick="switchPage('alerta')" style="color: var(--danger-color);">Status de Alerta</a>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 Comunidade FoxOS • <span data-i18n="footer_by">Criado por Tailsgamerv :D</span>
+            &copy; 2026 Tailsgamerv Dev Portal • <span data-i18n="footer_by">Construído com estilo Cyber-KDE</span>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- JavaScript para Temas, Páginas Falsas e Idiomas -->
     <script>
-        // Alternar Tema Escuro / Claro
-        function toggleTheme() {
-            const body = document.body;
-            const btn = document.getElementById('theme-btn');
-            body.classList.toggle('light-theme');
-
-            if (body.classList.contains('light-theme')) {
-                btn.innerText = '🌙 Modo Escuro';
-            } else {
-                btn.innerText = '☀️ Modo Claro';
-            }
-        }
-
-        // Navegação entre Páginas
+        // Sistema de Troca de Páginas
         function switchPage(pageId) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active-page'));
@@ -567,133 +579,59 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Dicionário de Idiomas
+        // Alternar Tema Claro/Escuro
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('theme-btn');
+            body.classList.toggle('light-theme');
+
+            if (body.classList.contains('light-theme')) {
+                btn.innerText = '🌙 Dark Mode';
+            } else {
+                btn.innerText = '☀️ Light Mode';
+            }
+        }
+
+        // Tradução (i18n)
         const translations = {
             pt: {
-                nav_home: "Início",
-                nav_produtos: "Produtos",
-                nav_comics: "Comics & Arte",
-                nav_dev: "Desenvolvimento",
+                nav_home: "Dev Home",
+                nav_projetos: "Projetos",
+                nav_comics: "Comics",
                 nav_apoiar: "♥ Apoiar",
-                banner_title: "SOCORRO! O KONQI VAI MATAR O TAILSGAMERV!!",
-                banner_btn: "Assistir no YouTube",
-                card_subtitle: "@tailsgamerv56 • Criador do FoxOS",
+                banner_title: "NÓS ESTAMOS EM PERIGO!!",
+                banner_btn: "Ler Documentação",
+                card_subtitle: "@tailsgamerv56 • Desenvolvedor & Criador",
                 card_btn: "Ver Gravatar",
-                hero_desc: "O lar oficial do FoxOS (Kubuntu 18.04 32 bits + KDE Plasma). Desempenho puro sem travar enquanto a raposa tenta escapar do Konqi!",
-                btn_yt: "📺 YouTube",
-                btn_gravatar: "👤 Gravatar",
-                btn_download: "📦 Baixar Apps",
-                news_title: "Anúncios & Notícias",
-                news_1_title: "Kernel 32-bits Otimizado",
-                news_1_desc: "O FoxOS continua garantindo estabilidade máxima em computadores antigos sem travar nada.",
-                news_2_title: "Ataque no Terminal",
-                news_2_desc: "O Konqi tentou rodar pacotes 64 bits, mas o kernel do FoxOS repeliu as instruções com sucesso!",
-                comics_title: "🎨 Quadrinhos & Galeria",
-                comics_desc: "Tirinhas oficiais do FoxOS e histórias de bastidores desenhadas por Tailsgamerv!",
-                prod_title: "📦 Produtos & Downloads",
-                prod_desc: "Baixe versões customizadas e ferramentas exclusivas do FoxOS.",
-                prod_1_desc: "Baseado no Kubuntu 18.04 LTS com o ecossistema rápido e otimizado para a raposa.",
-                prod_btn: "Download (.ISO)",
-                wip_tag: "Em Construção",
-                prod_2_desc: "Repositório especial com programas adaptados para máquinas com recursos limitados.",
-                dev_title: "💻 Área do Desenvolvedor",
-                dev_desc: "Projetos em C++, scripts de automação e documentação do sistema.",
-                support_title: "♥ Apoie o FoxOS",
-                support_desc: "Ajude o Tailsgamerv a manter o projeto vivo e criar mais conteúdos!",
-                support_card_title: "Contribua com o projeto",
-                support_card_desc: "Inscreva-se no canal do YouTube, compartilhe com os amigos ou envie feedback direto pelo Gravatar!",
-                footer_col1: "Produtos",
-                footer_col2: "Desenvolva",
-                footer_col3: "Notícias",
-                footer_col4: "Recursos",
-                footer_col5: "Comunidade",
-                footer_doc: "Documentação",
-                footer_announcements: "Anúncios",
-                footer_by: "Criado por Tailsgamerv :D"
+                hero_desc: "Bem-vindo à minha página pessoal de desenvolvedor! Aqui publico meus projetos, tirinhas, códigos e atualizações sobre os meus experimentos de sistemas.",
+                sec_repos: "Meus Repositórios & Links",
+                footer_by: "Construído com estilo Cyber-KDE"
             },
             en: {
-                nav_home: "Home",
-                nav_produtos: "Products",
-                nav_comics: "Comics & Art",
-                nav_dev: "Development",
+                nav_home: "Dev Home",
+                nav_projetos: "Projects",
+                nav_comics: "Comics",
                 nav_apoiar: "♥ Support",
-                banner_title: "HELP! KONQI IS GOING TO KILL TAILSGAMERV!!",
-                banner_btn: "Watch on YouTube",
-                card_subtitle: "@tailsgamerv56 • Creator of FoxOS",
+                banner_title: "WE ARE IN DANGER!!",
+                banner_btn: "Read Docs",
+                card_subtitle: "@tailsgamerv56 • Developer & Creator",
                 card_btn: "View Gravatar",
-                hero_desc: "The official home of FoxOS (Kubuntu 18.04 32-bit + KDE Plasma). Pure performance with zero lag while the fox tries to escape Konqi!",
-                btn_yt: "📺 YouTube",
-                btn_gravatar: "👤 Gravatar",
-                btn_download: "📦 Download Apps",
-                news_title: "Announcements & News",
-                news_1_title: "Optimized 32-bit Kernel",
-                news_1_desc: "FoxOS continues to ensure maximum stability on older computers without freezing.",
-                news_2_title: "Terminal Attack",
-                news_2_desc: "Konqi tried to run 64-bit packages, but the FoxOS kernel successfully blocked the instructions!",
-                comics_title: "🎨 Comics & Gallery",
-                comics_desc: "Official FoxOS comic strips and behind-the-scenes stories drawn by Tailsgamerv!",
-                prod_title: "📦 Products & Downloads",
-                prod_desc: "Download custom builds and exclusive tools for FoxOS.",
-                prod_1_desc: "Based on Kubuntu 18.04 LTS featuring a fast, fox-optimized ecosystem.",
-                prod_btn: "Download (.ISO)",
-                wip_tag: "Work in Progress",
-                prod_2_desc: "Special repository with software adapted for low-resource machines.",
-                dev_title: "💻 Developer Zone",
-                dev_desc: "C++ projects, automation scripts, and system documentation.",
-                support_title: "♥ Support FoxOS",
-                support_desc: "Help Tailsgamerv keep the project alive and create more content!",
-                support_card_title: "Contribute to the project",
-                support_card_desc: "Subscribe to the YouTube channel, share with friends, or send feedback directly via Gravatar!",
-                footer_col1: "Products",
-                footer_col2: "Develop",
-                footer_col3: "News",
-                footer_col4: "Resources",
-                footer_col5: "Community",
-                footer_doc: "Documentation",
-                footer_announcements: "Announcements",
-                footer_by: "Created by Tailsgamerv :D"
+                hero_desc: "Welcome to my personal developer page! Here I publish my projects, comics, code, and system experiment updates.",
+                sec_repos: "My Repositories & Links",
+                footer_by: "Built with Cyber-KDE style"
             },
             es: {
-                nav_home: "Inicio",
-                nav_produtos: "Productos",
-                nav_comics: "Cómics y Arte",
-                nav_dev: "Desarrollo",
+                nav_home: "Dev Inicio",
+                nav_projetos: "Proyectos",
+                nav_comics: "Cómics",
                 nav_apoiar: "♥ Apoyar",
-                banner_title: "¡¡SOCORRO! ¡KONQI VA A MATAR A TAILSGAMERV!!",
-                banner_btn: "Ver en YouTube",
-                card_subtitle: "@tailsgamerv56 • Creador de FoxOS",
+                banner_title: "¡¡ESTAMOS EN PELIGRO!!",
+                banner_btn: "Leer Docs",
+                card_subtitle: "@tailsgamerv56 • Desarrollador y Creador",
                 card_btn: "Ver Gravatar",
-                hero_desc: "El hogar oficial de FoxOS (Kubuntu 18.04 de 32 bits + KDE Plasma). ¡Rendimiento puro sin congelamentos mientras el zorro intenta escapar de Konqi!",
-                btn_yt: "📺 YouTube",
-                btn_gravatar: "👤 Gravatar",
-                btn_download: "📦 Descargar Apps",
-                news_title: "Anuncios y Noticias",
-                news_1_title: "Kernel de 32 bits Optimizado",
-                news_1_desc: "FoxOS sigue garantizando la máxima estabilidad en ordenadores antiguos sin trabarse.",
-                news_2_title: "Ataque en la Terminal",
-                news_2_desc: "¡Konqi intentó ejecutar paquetes de 64 bits, pero el kernel de FoxOS bloqueó las instrucciones con éxito!",
-                comics_title: "🎨 Cómics y Galería",
-                comics_desc: "¡Tiras cómicas oficiales de FoxOS e historias entre bambalinas dibujadas por Tailsgamerv!",
-                prod_title: "📦 Productos y Descargas",
-                prod_desc: "Descarga versiones personalizadas y herramientas exclusivas de FoxOS.",
-                prod_1_desc: "Basado en Kubuntu 18.04 LTS con un ecosistema rápido y optimizado para el zorro.",
-                prod_btn: "Descargar (.ISO)",
-                wip_tag: "En Construcción",
-                prod_2_desc: "Repositorio especial con programas adaptados para máquinas de pocos recursos.",
-                dev_title: "💻 Zona de Desarrolladores",
-                dev_desc: "Proyectos en C++, scripts de automatización y documentación del sistema.",
-                support_title: "♥ Apoya a FoxOS",
-                support_desc: "¡Ayuda a Tailsgamerv a mantener vivo el proyecto y crear más contenido!",
-                support_card_title: "Contribuye al proyecto",
-                support_card_desc: "¡Suscríbete al canal de YouTube, comparte con amigos o envía tus comentarios directamente por Gravatar!",
-                footer_col1: "Productos",
-                footer_col2: "Desarrolla",
-                footer_col3: "Noticias",
-                footer_col4: "Recursos",
-                footer_col5: "Comunidad",
-                footer_doc: "Documentación",
-                footer_announcements: "Anuncios",
-                footer_by: "Creado por Tailsgamerv :D"
+                hero_desc: "¡Bienvenido a mi página personal de desarrollador! Aquí publico mis proyectos, cómics, código y actualizaciones.",
+                sec_repos: "Mis Repositorios y Enlaces",
+                footer_by: "Construido con estilo Cyber-KDE"
             }
         };
 
