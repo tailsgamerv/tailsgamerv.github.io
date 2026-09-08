@@ -1,0 +1,9 @@
+[SECRET DEVELOPMENT DOCUMENTATION]
+
+Apparently—regarding the STI 1414 computer (codename FoxOS-PRIVATE)—there is something about Konqueror that might make FoxOS WORSE!! (I think). Konqueror stores image caches. We were on the KDE webpage and clicked on the KDE 30th Anniversary page. We scrolled down (and were losing our sanity—just kidding!), and in the `.cache/konqueror/` folder, there was a folder containing images from the... SITE?!?
+
+And here is news that could destroy FoxOS:
+
+Apparently, we are way behind KDE; they’ve created a 3D model of Konqi... We are likely lagging behind, and unfortunately, there is a slight chance this could lead to the end of the FoxOS Project...
+
+The good news is that this is unlikely to happen. Anyway, that’s the news—bye! :D
