@@ -77,13 +77,6 @@ h2 { font-size: 1.15rem; margin: 2.75rem 0 0.75rem; }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .btn.primary:hover { filter: brightness(1.08); }
 
-.note {
-  margin-top: 2.5rem; padding: 0.9rem 1.1rem; background: var(--note-bg);
-  border-left: 4px solid var(--note); border-radius: 0 4px 4px 0; max-width: 40rem;
-}
-.note strong { display: block; }
-.note a { color: var(--note); font-weight: 600; }
-
 /* listas */
 .rows { list-style: none; border-top: 1px solid var(--line); }
 .rows li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.25rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line); align-items: baseline; }
@@ -91,14 +84,6 @@ h2 { font-size: 1.15rem; margin: 2.75rem 0 0.75rem; }
 .rows p { color: var(--sub); grid-column: 1; max-width: 34rem; }
 .rows .go { grid-row: 1 / span 2; grid-column: 2; align-self: center; font-weight: 600; white-space: nowrap; }
 .tag { font-size: 0.8rem; color: var(--sub); border: 1px solid var(--line); border-radius: 3px; padding: 0 0.4rem; margin-left: 0.5rem; font-weight: 400; vertical-align: 1px; }
-
-/* nota */
-article { max-width: 38rem; }
-article p { margin-bottom: 1rem; }
-article .sig { color: var(--sub); margin-top: 1.5rem; }
-.back { display: inline-block; margin-top: 1.5rem; }
-
-.comic { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); margin-top: 1rem; }
 
 footer { margin-top: auto; padding-top: 3rem; color: var(--sub); font-size: 0.875rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; }
 footer a { color: var(--sub); }
@@ -127,8 +112,6 @@ footer a:hover { color: var(--text); }
   <nav aria-label="Principal">
     <a href="#home" data-p="home" data-i18n="nav_home">Início</a>
     <a href="#projetos" data-p="projetos" data-i18n="nav_projetos">Projetos</a>
-    <a href="#notas" data-p="notas" data-i18n="nav_notas">Notas</a>
-    <a href="#comics" data-p="comics" data-i18n="nav_comics">Comics</a>
     <a href="#apoiar" data-p="apoiar" data-i18n="nav_apoiar">Apoiar</a>
   </nav>
   <div class="tools">
@@ -155,13 +138,6 @@ footer a:hover { color: var(--text); }
       <a class="btn" href="https://www.youtube.com/@Tailsgamerv" target="_blank" rel="noopener">YouTube</a>
       <a class="btn" href="https://gravatar.com/tailsgamerv56" target="_blank" rel="noopener">Gravatar</a>
     </div>
-
-    <div class="note">
-      <strong data-i18n="note_title">Nota nova sobre o FoxOS</strong>
-      <span data-i18n="note_text">O KDE fez um modelo 3D do Konqi, e isso pode afetar o projeto.</span>
-      <a href="#notas" data-i18n="note_link">Ler a nota</a>
-    </div>
-
     <h2 data-i18n="h_repos">Repositórios</h2>
     <ul class="rows">
       <li>
@@ -185,7 +161,6 @@ footer a:hover { color: var(--text); }
       <li>
         <h3>FoxOS <span class="tag">Experimento de SO</span></h3>
         <p>A página do FoxOS vai ter domínio e espaço próprios.</p>
-        <a class="go" href="#notas" data-i18n="read_note">Ler a nota</a>
       </li>
       <li>
         <h3>Este site <span class="tag">HTML e CSS</span></h3>
@@ -194,27 +169,6 @@ footer a:hover { color: var(--text); }
       </li>
     </ul>
   </section>
-
-  <section id="p-notas" class="page">
-    <article>
-      <h1>Konqueror, cache e o futuro do FoxOS</h1>
-      <p class="lead">Uma nota sobre o STI 1414 (codinome FoxOS-PRIVATE).</p>
-      <h2>O que aconteceu</h2>
-      <p>No STI 1414, o Konqueror guarda cache de imagens. Abri a página dos 30 anos do KDE, rolei até o fim e fui olhar a pasta <code>.cache/konqueror/</code>. Lá estavam as imagens do site.</p>
-      <h2>Por que isso importa</h2>
-      <p>O KDE já fez um modelo 3D do Konqi. Provavelmente estamos atrasados, e isso pode ter uma pequena chance de encerrar o projeto FoxOS.</p>
-      <p>A boa notícia é que isso é difícil de acontecer. Era essa a notícia, tchau :D</p>
-      <p class="sig">Tailsgamerv</p>
-      <a class="back" href="#home" data-i18n="back">Voltar ao início</a>
-    </article>
-  </section>
-
-  <section id="p-comics" class="page">
-    <h1>Comics</h1>
-    <p class="lead" data-i18n="comics_lead">Artes, desenhos e ilustrações feitas por mim.</p>
-    <img class="comic" src="https://1.gravatar.com/userimage/255651233/d4416614d48f34f354867fb47179b205?size=600" alt="Tirinha desenhada por Tailsgamerv" loading="lazy">
-  </section>
-
   <section id="p-apoiar" class="page">
     <h1 data-i18n="nav_apoiar">Apoiar</h1>
     <p class="lead" data-i18n="sup_lead">Gostou dos projetos? Dá para ajudar de graça.</p>
@@ -255,31 +209,25 @@ footer a:hover { color: var(--text); }
   var lang = 'pt';
 
   var T = {
-    pt: { nav_home:'Início', nav_projetos:'Projetos', nav_notas:'Notas', nav_comics:'Comics', nav_apoiar:'Apoiar',
+    pt: { nav_home:'Início', nav_projetos:'Projetos', nav_apoiar:'Apoiar',
       theme_dark:'Tema escuro', theme_light:'Tema claro',
       hero:'Escrevo código, desenho tirinhas e faço experimentos com sistemas operacionais.',
-      note_title:'Nota nova sobre o FoxOS', note_text:'O KDE fez um modelo 3D do Konqi, e isso pode afetar o projeto.', note_link:'Ler a nota',
       h_repos:'Repositórios', open_repo:'Abrir repositório', open_profile:'Abrir perfil',
-      proj_lead:'Sistemas, scripts e ferramentas em que eu trabalho.', h_active:'Em andamento', read_note:'Ler a nota',
-      back:'Voltar ao início', comics_lead:'Artes, desenhos e ilustrações feitas por mim.',
+      proj_lead:'Sistemas, scripts e ferramentas em que eu trabalho.', h_active:'Em andamento',
       sup_lead:'Gostou dos projetos? Dá para ajudar de graça.', sup_gh:'Dê uma estrela no GitHub', sup_gh_p:'Ajuda o repositório a ser encontrado por mais gente.',
       sup_yt:'Inscreva-se no YouTube', sup_yt_p:'Vídeos e atualizações dos experimentos.', sup_gr:'Mande uma mensagem', sup_gr_p:'Pelo meu perfil no Gravatar.', src:'Código-fonte' },
-    en: { nav_home:'Home', nav_projetos:'Projects', nav_notas:'Notes', nav_comics:'Comics', nav_apoiar:'Support',
+    en: { nav_home:'Home', nav_projetos:'Projects', nav_apoiar:'Support',
       theme_dark:'Dark theme', theme_light:'Light theme',
       hero:'I write code, draw comics and run experiments with operating systems.',
-      note_title:'New note about FoxOS', note_text:'KDE made a 3D model of Konqi, and that may affect the project.', note_link:'Read the note',
       h_repos:'Repositories', open_repo:'Open repository', open_profile:'Open profile',
-      proj_lead:'Systems, scripts and tools I work on.', h_active:'In progress', read_note:'Read the note',
-      back:'Back to home', comics_lead:'Art, drawings and illustrations made by me.',
+      proj_lead:'Systems, scripts and tools I work on.', h_active:'In progress',
       sup_lead:'Like the projects? You can help for free.', sup_gh:'Star the repository on GitHub', sup_gh_p:'Helps more people find it.',
       sup_yt:'Subscribe on YouTube', sup_yt_p:'Videos and experiment updates.', sup_gr:'Send a message', sup_gr_p:'Through my Gravatar profile.', src:'Source code' },
-    es: { nav_home:'Inicio', nav_projetos:'Proyectos', nav_notas:'Notas', nav_comics:'Cómics', nav_apoiar:'Apoyar',
+    es: { nav_home:'Inicio', nav_projetos:'Proyectos', nav_apoiar:'Apoyar',
       theme_dark:'Tema oscuro', theme_light:'Tema claro',
       hero:'Escribo código, dibujo tiras cómicas y hago experimentos con sistemas operativos.',
-      note_title:'Nota nueva sobre FoxOS', note_text:'KDE hizo un modelo 3D de Konqi, y eso puede afectar al proyecto.', note_link:'Leer la nota',
       h_repos:'Repositorios', open_repo:'Abrir repositorio', open_profile:'Abrir perfil',
-      proj_lead:'Sistemas, scripts y herramientas en los que trabajo.', h_active:'En curso', read_note:'Leer la nota',
-      back:'Volver al inicio', comics_lead:'Arte, dibujos e ilustraciones hechos por mí.',
+      proj_lead:'Sistemas, scripts y herramientas en los que trabajo.', h_active:'En curso',
       sup_lead:'¿Te gustaron los proyectos? Puedes ayudar gratis.', sup_gh:'Dale una estrella en GitHub', sup_gh_p:'Ayuda a que más gente encuentre el repositorio.',
       sup_yt:'Suscríbete en YouTube', sup_yt_p:'Vídeos y novedades de los experimentos.', sup_gr:'Envía un mensaje', sup_gr_p:'Desde mi perfil de Gravatar.', src:'Código fuente' }
   };
@@ -327,4 +275,5 @@ footer a:hover { color: var(--text); }
 })();
 </script>
 </body>
-</html>
+        </html>
+          
